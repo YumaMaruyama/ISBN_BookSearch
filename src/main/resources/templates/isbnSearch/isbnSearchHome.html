@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap  jQuery Bootstrapの読み込み必要がある-->
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<!--　jQueryのjsファイル タイムリーフでファイル読み込み　 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--　Bootstrap のjsファイル（jQueryの後に読み込む） タイムリーフでファイル読み込み　 -->
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+<script src="js/SocialShare.min.js"></script>
+
+<link th:href="@{/css/isbnSearchHome.css}" rel="stylesheet"></link>
+<link th:href="@{/css/jpegIsbnSearchHome.css}" rel="stylesheet"></link>
+
+<title>isbnSearchHome</title>
+</head>
+<body class="jpeg"
+	background="/css/11aef8be31238f2981ee85a894cba60e_t (1).jpeg">
+
+	<!-- jQuery フォームリセット -->
+	<script>
+		$(function() {
+			// 入力値をリセット
+			$("#resetButton").click(function() {
+				$('#textField1').val("");
+			});
+		});
+	</script>
+
+	<table>
+		<th>
+		<td class="isbnSearchHomeTitle">ISBNで書籍検索</td>
+		</th>
+	</table>
+
+	<form method="post" th:action="@{/isbnSearchHome}">
+		<table>
+			<label class="isbnSearchHomeErrorMessage" th:text="${result}">エラーメッセージ</label>
+			<tr>
+				<th style="padding: 55px 0px 0px 500px;"><span
+					style="font-size: 17px">ISBNコード</span><input id="textField1"
+					type="text" class="form-control" style="font-size: x-large;"
+					name="isbn"></th>
+			</tr>
+		</table>
+		<button class="btn btn-gradient2 isbnSearchHomeSearchButton"
+			type="submit" name="search"><span>検索</span></button>
+		<button class="btn btn-gradient3 reset isbnSearchHomeResetButton"
+			id="resetButton" type="button" name="reset">
+			<span style="color: #5a5a5a;">リセット</span>
+		</button>
+
+		<br> <br><br>
+		<h2 class="text-center">
+			ISBNコード(ハイフンなしの13桁)で書籍検索ができます。<br><br>
+			<button class="btn btn-gradient" type="submit" name="isbnDetail"><span style="font-size:18px;">ISBNコードとは？</span></button>
+		</h2>
+	</form>
+</body>
+</html>

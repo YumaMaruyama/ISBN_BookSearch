@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap  jQuery Bootstrapの読み込み必要がある-->
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<!--　jQueryのjsファイル タイムリーフでファイル読み込み　 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--　Bootstrap のjsファイル（jQueryの後に読み込む） タイムリーフでファイル読み込み　 -->
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+
+<link th:href="@{/css/isbnSearchResult.css}" rel="stylesheet"></link>
+<link th:href="@{/css/jpegIsbnSearchResult.css}" rel="stylesheet"></link>
+
+<title>isbnSearchResult</title>
+</head>
+<body class="jpeg"
+	background="/css/11aef8be31238f2981ee85a894cba60e_t (1).jpeg">
+
+	<table class="text-center">
+	<tr>
+		<th>
+			<td class="isbnSearchResultTitle tableCss1"><span>ISBNで書籍検索結果</span></td>
+		</th>
+	<tr>
+	</table>
+
+	<br><br>
+	<table class="table table-borderd table-hover tableCss" style="width:800px;" align="center">
+	<!-- 変数名のitemをつけてIsbnDTOのIsbnItemsDTOのカラムを呼ぶ
+		<div th:each="item : ${isbnList}" th:object="${item}">-->
+		<tr>
+			<th class="isbnSearchResultTh text-center">ISBN</th>
+			<td th:if="${identifier != null}" class="isbnSearchResultTd" th:text="*{identifier}"></td>
+			<td th:if="${identifier == null}">認識できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">タイトル</th>
+	<!-- IsbnItemsDTOの中のIsbnVolumeInfoのカラムを表示したいのでitemsのvolumeInfoのtitleとする -->
+			<td th:if="${title != null}" class="isbnSearchResultTd" th:text="*{title}"></td>
+			<td th:if="${title == null}" class="isbnSearchResultTd">サブタイトルが取得できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">サブタイトル</th>
+			<td th:if="${subtitle != null}" class="isbnSearchResultTd" th:text="*{subtitle}"></td>
+			<td th:if="${subtitle == null}" class="isbnSearchResultTd" ><span style="color:red;"></span>サブタイトル取得できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">著者</th>
+			<td th:if="${authors != null}" class="isbnSearchResultTd" th:text="*{authors} + ' '"></td>
+			<td th:if="${authors == null}" class="isbnSearchResultTd" >著者が取得できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">ページ数</th>
+			<td th:if="${pageCount != null}" class="isbnSearchResultTd" th:text="*{pageCount} + 'ページ'"></td>
+			<td th:if="${pageCount == null}" class="isbnSearchResultTd" >ページ数が取得できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">出版日</th>
+			<td th:if="${publishedDateYear != null}" class="isbnSearchResultTd" th:text="*{publishedDateYear} + '年'"></td>
+			<td th:if="${publishedDateMonthFrom != null}" class="isbnSearchResultTd" th:text="*{publishedDateMonthFrom} + '年' + *{publishedDateMonthTo} + '月'"></td>
+			<td th:if="${publishedDateYear == null} and ${publishedDateMonthFrom == null}" class="isbnSearchResultTd" >出版日が取得できませんでした</td>
+		</tr>
+
+		<tr>
+			<th class="isbnSearchResultTh text-center">本の詳細</th>
+			<td th:if="${description != null}" class="isbnSearchResultTd" th:text="*{description}"></td>
+			<td th:if="${description == null}" class="isbnSearchResultTd">本の詳細が取得できませんでした</td>
+
+		</tr>
+
+		<!-- <tr>
+			<th>サムネイル</th>
+			<td th:text="{volumeInfo.imageLinks.smallThumbnail}"></td>
+		</tr>
+		-->
+		</div>
+
+	</table>
+
+			<form method="post" th:action="@{/isbnSearchHome}">
+			<div class="text-center">
+			<button class="btn btn-gradient" type="submit" name="home"><span style="font-size:18px;">ホーム画面へ</span></button>
+			</div>
+			</form>
+</body>
+</html>
