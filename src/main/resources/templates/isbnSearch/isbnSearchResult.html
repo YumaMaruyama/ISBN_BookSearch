@@ -75,15 +75,16 @@
 		<tr>
 			<th class="isbnSearchResultTh text-center">本の詳細</th>
 			<td th:if="${description != null}" class="isbnSearchResultTd" th:text="*{description}"></td>
-			<td th:if="${description == null}" class="isbnSearchResultTd">本の詳細が取得できませんでした</td>
+			<td th:if="${description == null}" class="isbnSearchResultTd">詳細が取得できませんでした</td>
 
 		</tr>
 
-		<!-- <tr>
-			<th>サムネイル</th>
-			<td th:text="{volumeInfo.imageLinks.smallThumbnail}"></td>
+		 <tr>
+			<th class="isbnSearchResultTh text-center">サムネイル</th>
+			<td th:if="${img != null}" class="isbnSearchResultTd text-center"><img th:src="${img}"></td>
+			<td th:if="${img == null}" class="isbnSearchResultTd text-center">サムネイルが取得できませんでした。</td>
 		</tr>
-		-->
+		
 		</div>
 
 	</table>

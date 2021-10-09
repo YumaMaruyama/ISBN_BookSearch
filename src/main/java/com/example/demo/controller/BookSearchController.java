@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.service.IsbnService;
 import com.example.demo.model.IsbnDTO;
+import com.example.demo.model.IsbnImageLinksDTO;
 import com.example.demo.model.IsbnIndustryIdentifiersDTO;
 import com.example.demo.model.IsbnItemsDTO;
 import com.example.demo.model.IsbnVolumeInfoDTO;
@@ -111,7 +112,9 @@ public class BookSearchController {
 				form.setDescription(description);
 				model.addAttribute("description", form.getDescription());
 			}
-
+			 
+			IsbnImageLinksDTO imageLinks = volumeInfo.getImageLinks();
+			model.addAttribute("img",imageLinks.getSmallThumbnail());
 
 			//変数の値をFormクラスにセットして、modelでhtmlに出るようにする
 			form.setTitle(title);
