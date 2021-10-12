@@ -34,6 +34,6 @@
 ![スクリーンショット (44)-crop](https://user-images.githubusercontent.com/83486993/136874722-b4040428-09fd-46fe-b94f-f25bc0da794b.png)
 
 2.ISBNコードを入力して検索すると、入力した本の情報が確認できます。
-![スクリーンショット (45)-crop](https://user-images.githubusercontent.com/83486993/136874737-78d8182e-21e3-4d71-af82-3abe0a9dd4ce.png)
-![スクリーンショット (46)-crop](https://user-images.githubusercontent.com/83486993/136874750-0e0d65f0-f7df-4413-b004-d833d9f96f59.png)
+![スクリーンショット (45)-crop](https://user-images.githubusercontent.com/83486993/136874971-7988386f-a080-4e62-8805-2217e6a6ea95.png)
+![スクリーンショット (46)-crop](https://user-images.githubusercontent.com/83486993/136874980-8f10f3c8-c724-4f91-a388-a9b407b200ff.png)
 
