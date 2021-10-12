@@ -24,6 +24,7 @@
 * Devtools 2.4.2
 * JDBC 5.3.3
 * web 5.3.3
+* Google Book API
 
 ## [アプリ説明] ##
 
