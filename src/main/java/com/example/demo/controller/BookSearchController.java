@@ -77,11 +77,7 @@ public class BookSearchController {
 			String title = volumeInfo.getTitle();
 			String subtitle = volumeInfo.getSubtitle();
 			List<String> authors = volumeInfo.getAuthors();
-//			for (int i = 0; i < authors; i++) {
-//				String authorsTest = authors;
-//				form.setAuthors(authorsTest);
-//				model.addAttribute("authors", authorsTest);
-//			}
+			
 			for (String authorsTest : authors) {
 				form.setAuthors(authorsTest);
 				model.addAttribute("authors", authorsTest);
@@ -92,7 +88,6 @@ public class BookSearchController {
 			String stringNumYear = "mmmm";
 
 			if(publishedDate.length() == stringNumMonth.length()) {
-				System.out.println("年と月取得");
 				String getStringNumMonthFrom = publishedDate.substring(0, 4);
 				String getStriingNumMonthTo = publishedDate.substring(4, 7);
 				System.out.println("From" + getStringNumMonthFrom + "To"+ getStriingNumMonthTo);
@@ -101,14 +96,12 @@ public class BookSearchController {
 
 
 			}else if(publishedDate.length() == stringNumYear.length()) {
-				System.out.println("年のみ取得");
 				model.addAttribute("publishedDateYear",publishedDate);
 
 			}
 			String description = volumeInfo.getDescription();
 			System.out.println("description" + description);
 			if ((description != null && (!description.isEmpty()))) {
-				System.out.println("詳細ifTrue");
 				form.setDescription(description);
 				model.addAttribute("description", form.getDescription());
 			}
@@ -123,11 +116,8 @@ public class BookSearchController {
 			model.addAttribute("subtitle", form.getSubtitle());
 			form.setPageCount(pageCount);
 			model.addAttribute("pageCount", form.getPageCount());
-//			form.setPublishedDate(publishedDate);
-//			model.addAttribute("publishedDate", form.getPublishedDate());
 
 		}
-		//model.addAttribute("isbnList",isbndto.getItems());
 
 		return "isbnSearch/isbnSearchResult";
 	}
